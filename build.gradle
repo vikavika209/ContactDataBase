@@ -1,19 +1,38 @@
 plugins {
+    id 'org.springframework.boot' version '3.3.5'  // Плагин Spring Boot
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'  // Управление версиями зависимостей
     id 'java'
 }
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
+sourceCompatibility = '17'  // Убедитесь, что версия Java правильная для вашего проекта
 
 repositories {
-    mavenCentral()
+    mavenCentral()  // Репозиторий для зависимостей
 }
 
 dependencies {
+    // Spring Boot Starter для веб-приложений
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Взаимодействие с базой данных (если используется)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Валидация данных
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // JSON-сериализация (Jackson)
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    // Тестирование
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Поддержка JUnit 5
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform()  // Использование JUnit 5 для тестов
 }
